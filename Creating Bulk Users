@@ -1,4 +1,4 @@
-$ADUsers = Import-csv C:\it\Final_NewAccounts.csv
+$ADUsers = Import-csv C:\Users\mavs2\Desktop\Project\Final_NewAccounts.csv
 
 #Loop through each row containing user details in the CSV file 
 foreach ($User in $ADUsers)
