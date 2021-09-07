@@ -1,1 +1,9 @@
+#Search to see locked out accounts or a specific account
+Search-ADAccount -lockedout | Select-Object Name, SamAccountName
+
+#Unlocks specific account in AD
+Unlock-ADAccount -Identity samAccountName
+
+#Search and unlocks all accounts in AD
+Search-ADAccount -Lockedout | Unlock-AdAccount
 
