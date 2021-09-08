@@ -1,0 +1,2 @@
+C:>Add-ADGroupMember -Identity GroupNAME -Member USERNAME
+C:>Get-ADGroupMember GroupNAME
