@@ -1,0 +1,1 @@
+PS C:\> New-ADOrganizationalUnit -Name "EXAMPLE" -Path "DC=DOMAIN,DC=LOCAL"
