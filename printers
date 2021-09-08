@@ -1,0 +1,1 @@
+PS C:\>Get-Printer -ComputerName PrintServer
