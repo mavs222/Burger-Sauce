@@ -1,0 +1,3 @@
+#Creating Computers
+
+PS C:\> New-ADComputer -Name "USER02-SRV2" -SamAccountName "USER02-SRV2" -Path "OU=ApplicationServers,OU=ComputerAccounts,OU=Managed,DC=USER02,DC=COM"
