@@ -1,0 +1,8 @@
+Get-PSDrive C | Select-Object Used,Free
+
+#of a remote computer
+Get-WmiObject Win32_LogicalDisk -ComputerName remote_computer -Filter DriveType=3 | Select-Object DeviceID, FreeSpace, Size
+
+
+#tRUNCATE DOWN TO 1GB
+Get-WmiObject Win32_LogicalDisk -ComputerName remote_computer -Filter DriveType=3 | Select-Object DeviceID, FreeSpace, Size
