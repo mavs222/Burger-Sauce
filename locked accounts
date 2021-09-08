@@ -1,0 +1,10 @@
+#Retrieve locked accounts
+
+Search-ADAccount -LockedOut -UsersOnly | Select-Object Name, SamAccountName
+
+Unlock-ADAccount -Identity RussellS
+
+
+Enable-ADAccount -Identity RussellS
+
+PS C:\> Set-ADAccountExpiration -Identity PattiFu -DateTime "10/18/2008"
