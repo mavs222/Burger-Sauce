@@ -1,0 +1,3 @@
+List Ip address for a remote host
+
+Get-NetIPAddress
