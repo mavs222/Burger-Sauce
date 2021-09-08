@@ -1,0 +1,8 @@
+# Get day of the year
+GET-DATE | Select-Object -Property Dayofyear
+
+#get time
+get-date
+
+
+
