@@ -1,0 +1,8 @@
+#View process by
+
+Get-Process -computername example
+
+stop process 
+(Get-WmiObject Win32_Process -ComputerName mango | ?{ $_.ProcessName -match "notepad" }).Terminate()
+
+start
