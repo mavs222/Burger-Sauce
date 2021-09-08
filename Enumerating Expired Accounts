@@ -1,2 +1,2 @@
 #Enumerating and listing accounts that are disabled 
-Get-ADComputer -Filter {(Enabled -eq $False)} -ResultSetSize $null -Server <AnyDomainController> -Properties Name, OperatingSystem
+Get-ADUser -Filter {(Enabled -eq $False)} -ResultSetSize $null -Server <AnyDomainController> -Properties Name, OperatingSystem
