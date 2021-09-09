@@ -1,1 +1,5 @@
 PS C:\> New-ADOrganizationalUnit -Name "EXAMPLE" -Path "DC=DOMAIN,DC=LOCAL"
+
+Move user
+
+Get-ADUser $name| Move-ADObject -TargetPath 'OU=nonactive,OU=compny,DC=domain,Dc=net'
