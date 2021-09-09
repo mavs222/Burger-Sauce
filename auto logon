@@ -1,0 +1,65 @@
+That’s it. Cool stuff. Which brings me to the code.
+
+The Code
+Before you run the code, check your PowerShell ExecutionPolicy settings. On Windows 10 computers the default setting is Restriced. In order to run the script, you have to change the policy to at least RemoteSigned.
+
+1
+2
+3
+Get-ExecutionPolicy
+ 
+Set-ExecutionPolicy RemoteSigned -Force
+
+Ready ? Now it’s party time.
+
+Copy the code below into PowerShell ISE or an editor of your choosing. Run the code and enter username and password. Then restart the computer and check if it works as expected.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+### The code below configures Auto-Login on Windows computers ###
+ 
+<#
+ 
+Author: Patrick Gruenauer | Microsoft MVP on PowerShell
+Web: https://sid-500.com
+ 
+#>
+ 
+$Username = Read-Host 'Enter username for auto-logon (f.e. contoso\user1)'
+$Pass = Read-Host "Enter password for $Username"
+$RegistryPath = 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+Set-ItemProperty $RegistryPath 'AutoAdminLogon' -Value "1" -Type String 
+Set-ItemProperty $RegistryPath 'DefaultUsername' -Value "$Username" -type String 
+Set-ItemProperty $RegistryPath 'DefaultPassword' -Value "$Pass" -type String
+ 
+Write-Warning "Auto-Login for $username configured. Please restart computer."
+ 
+$restart = Read-Host 'Do you want to restart your computer now for testing auto-logon? (Y/N)'
+ 
+If ($restart -eq 'Y') {
+ 
+    Restart-Computer -Force
+ 
