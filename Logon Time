@@ -1,0 +1,16 @@
+Only get the properties that you intend to use... it's more efficient. Retrieving all the properties of all computers in the domain when you don't really need all the properties is unnecessarily demanding on your domain controller. It's wasteful.
+
+Get-ADComputer -Filter * -Properties OperatingSystem, LastLogonDate is better, since you don't need all the properties. (The 'Name' property is always included.)
+
+| FT Name, OperatingSystem, LastLogonDate -Autosize
+
+Don't format output until the very end. In other words, Format-Table and Format-List should be the very final cmdlets in the entire chain of cmdlets that data is piped to.
+
+Get-ADComputer -Filter * -Properties OperatingSystem, LastLogonDate | 
+    Where { $_.LastLogonDate -GT (Get-Date).AddDays(-30) }
+
+This is a little better, but there's still some inefficiency, since you are still retrieving a data set of all computers... you could let the domain controller do the filtering for you.
+
+$LastMonth = $(((Get-Date).AddDays(-30)).ToFileTime())
+
+Get-ADComputer -LDAPFilter "(lastLogonTimeStamp>=$LastMonth)" -Properties OperatingSystem,LastLogonDate
